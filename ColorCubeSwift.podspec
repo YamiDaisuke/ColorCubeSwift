@@ -22,6 +22,7 @@ Pod::Spec.new do |s|
   }
 
   s.platform     = :ios, "9.1"
+  s.swift_version = '4.2'
 
   s.source = {
     :git => "https://github.com/YamiDaisuke/ColorCubeSwift.git",
