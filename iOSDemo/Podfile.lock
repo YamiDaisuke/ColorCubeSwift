@@ -1,0 +1,16 @@
+PODS:
+  - ColorCubeSwift (1.0.0)
+
+DEPENDENCIES:
+  - ColorCubeSwift (from `../`)
+
+EXTERNAL SOURCES:
+  ColorCubeSwift:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ColorCubeSwift: 9c4331f1c499187091bb3daca5862acef015c0ba
+
+PODFILE CHECKSUM: 17164d8f71962b01f3dac8790826e82c82f7f1f1
+
+COCOAPODS: 1.5.3
