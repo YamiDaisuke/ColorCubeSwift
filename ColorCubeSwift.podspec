@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
 
                   DESC
 
-  s.homepage     = "https://github.com/pixelogik/ColorCube"
+  s.homepage     = "https://github.com/YamiDaisuke/ColorCubeSwift"
 
   s.license      = { :type => "MIT" }
 
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "9.1"
 
   s.source = {
-    :git => "https://bitbucket.org/smartbox_way/fx-ott-content-details-ios",
+    :git => "https://github.com/YamiDaisuke/ColorCubeSwift.git",
     :tag => "v#{s.version}"
   }
 
