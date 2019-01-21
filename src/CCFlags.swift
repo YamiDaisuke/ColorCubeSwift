@@ -9,9 +9,7 @@
 import Foundation
 import UIKit
 
-public enum CCFlags: OptionBits {
-    public typealias RawValue = UInt32
-
+public enum CCFlags: UInt8 {
     // This ignores all pixels that are darker than a threshold
     case onlyBrightColors   = 1
 
