@@ -72,13 +72,23 @@ public class CCColorCube: NSObject {
         [-1,-1,-1],
     ]
 
-    private var cells: [CCCubeCell] = []
-
+    private var _cells: [CCCubeCell] = []
+    private var cells: [CCCubeCell]{
+        get {
+            if _cells.count == 0 {
+                _cells = [CCCubeCell](
+                    repeating: CCCubeCell(),
+                    count: CCColorCube.COLOR_CUBE_RESOLUTION_TIMES_3
+                )
+            }
+            return _cells
+        }
+        set {
+            _cells = newValue
+        }
+    }
     public override init() {
-        cells = [CCCubeCell](
-            repeating: CCCubeCell(),
-            count: CCColorCube.COLOR_CUBE_RESOLUTION_TIMES_3
-        )
+        
     }
 
     // Extracts and returns dominant colors of the image (the array contains UIColor objects). Result might be empty.
@@ -188,11 +198,13 @@ public class CCColorCube: NSObject {
 
     // Resets all cells
     private func clearCells(array: UnsafeMutableBufferPointer<CCCubeCell>) {
-        for i in 0..<CCColorCube.COLOR_CUBE_RESOLUTION_TIMES_3 {
-            array[i].hitCount = 0
-            array[i].redAcc = 0
-            array[i].greenAcc = 0
-            array[i].blueAcc = 0
+        if array.count > 0 {
+            for i in 0..<CCColorCube.COLOR_CUBE_RESOLUTION_TIMES_3 {
+                array[i].hitCount = 0
+                array[i].redAcc = 0
+                array[i].greenAcc = 0
+                array[i].blueAcc = 0
+            }
         }
     }
 
@@ -208,12 +220,13 @@ public class CCColorCube: NSObject {
         // We collect local maxima in here
         var localMaxima: [CCLocalMaximum] = []
         localMaxima.reserveCapacity(CCColorCube.COLOR_CUBE_RESOLUTION_TIMES_3)
-
+        
         self.cells.withUnsafeMutableBufferPointer { cellsPointer in
             var raw = self.rawPixelData(fromImage: image)
             self.clearCells(array: cellsPointer)
             // TODO: raw.data can be nil
 
+            
             // Helper variables
             var red: CGFloat
             var green: CGFloat
